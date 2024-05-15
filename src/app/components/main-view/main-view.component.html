@@ -1,1 +1,20 @@
-<p>main-view works!</p>
+<div *ngFor="let dish of dishData; let  i = index">
+    <p-panel header="{{dish.dish_title}}" [toggleable]="true" collapsed="false" class="m-3">
+        <img src="{{dish.dish_image}}" class="max-w-16rem">
+        
+        <h4>Description</h4>
+        <p>
+            {{dish.dish_description}}
+        </p>
+
+        <h4>Ingredients</h4>
+        <ul *ngFor="let ingredient of dish.dish_ingredients">
+            <li>{{ingredient}}</li>
+        </ul>
+
+        <h4>Steps</h4>
+        <ul *ngFor="let step of dish.dish_steps">
+            <li>{{step}}</li>
+        </ul>
+    </p-panel>
+</div>
