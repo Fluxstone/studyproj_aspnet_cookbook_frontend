@@ -1,7 +1,7 @@
 
 <p-toolbar>
     <div class="p-toolbar-group-start">
-        <p-button (onClick)="debug()" icon="pi pi-plus" class="mr-2"/>
+        <p-button (onClick)="showDialog()" icon="pi pi-plus" class="mr-2"/>
     </div>
     <div class="p-toolbar-group-center">
         <span class="p-input-icon-left">
@@ -10,8 +10,6 @@
         </span>
     </div>
 </p-toolbar>
-
-
 
 <div *ngFor="let dish of dishData; let  i = index">
     <p-panel header="{{dish.dish_title}}" [toggleable]="true" collapsed="true" class="m-3">
@@ -33,3 +31,65 @@
         </ul>
     </p-panel>
 </div>
+
+<p-dialog 
+    [(visible)]="visible" 
+    [modal]="true"
+    [style]="{ width: '75rem' }"
+>
+    <h3>Dish-Creator</h3>
+    <div class="field">
+        <label for="title">Dish-Title</label>
+        <input id="title" class="w-full" pInputText placeholder="Dish Title" [(ngModel)]="dish_title"/>
+    </div>
+
+    <div class="field">
+        <label for="time">Dish-Cooking-Time</label>
+        <p-inputNumber id="time" class="w-full" inputId="integeronly" placeholder="0" [(ngModel)]="dish_cookingTime"/> 
+    </div>
+
+    <div class="field">
+        <label for="link">Dish-Image-Link</label>
+        <input id="link" class="w-full" pInputText placeholder="Image Link" [(ngModel)]="dish_image"/>
+    </div>
+
+    <div class="field">
+        <label for="description">Dish-Title</label>
+        <p-editor id="description" class="w-full" [style]="{ height: '320px' }" [(ngModel)]="dish_description"/>
+    </div>
+    
+    <p-divider />
+
+    <!-- Ingredients -->
+    <div class="field">
+        <label for="ingredient1">Ingredient 1</label>
+        <input id="ingredient1" class="w-full" pInputText placeholder="Dish Title" [(ngModel)]="dish_title"/>
+    </div>
+    <div class="field">
+        <label for="ingredient2">Ingredient 2</label>
+        <input id="ingredient2" class="w-full" pInputText placeholder="Dish Title" [(ngModel)]="dish_title"/>
+    </div>
+    <div class="field">
+        <label for="ingredient3">Ingredient 3</label>
+        <input id="ingredient3" class="w-full" pInputText placeholder="Dish Title" [(ngModel)]="dish_title"/>    
+    </div>
+    
+    <p-divider />
+
+    <!-- Steps -->
+    <div class="field">
+        <label for="step1">Step 1</label>
+        <input id="step1" class="w-full" pInputText placeholder="Dish Title" [(ngModel)]="dish_title"/>
+    </div>
+    <div class="field">
+        <label for="step2">Step 2</label>
+        <input id="step2" class="w-full" pInputText placeholder="Dish Title" [(ngModel)]="dish_title"/>
+    </div>
+    <div class="field">
+        <label for="step3">Step 3</label>
+        <input id="step3" class="w-full" pInputText placeholder="Dish Title" [(ngModel)]="dish_title"/>    
+    </div>
+    
+    <p-button (onClick)="submitEntry()" class="mr-2" label="Submit"/>
+    
+</p-dialog>
